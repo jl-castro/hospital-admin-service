@@ -1,0 +1,4 @@
+com\dharbor\test\hospital\api\response\HospitalResponse.class
+com\dharbor\test\hospital\api\response\ProfileResponse.class
+com\dharbor\test\hospital\api\input\DoctorInput.class
+com\dharbor\test\hospital\api\input\HospitalInput.class
