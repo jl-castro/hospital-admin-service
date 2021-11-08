@@ -9,13 +9,15 @@ import com.dharbor.test.service.model.domain.Hospital;
 public class HospitalResponseBuilder {
     private HospitalResponse instance;
 
-    public static HospitalResponseBuilder getInstance(Hospital hospital){
+    public static HospitalResponseBuilder getInstance(Hospital hospital) {
         return (new HospitalResponseBuilder()).setHospital(hospital);
     }
 
-    private HospitalResponseBuilder(){instance= new HospitalResponse();}
+    private HospitalResponseBuilder() {
+        instance = new HospitalResponse();
+    }
 
-    private HospitalResponseBuilder setHospital(Hospital hospital){
+    private HospitalResponseBuilder setHospital(Hospital hospital) {
 
         instance.setHospitalId(hospital.getId());
         instance.setName(hospital.getName());
@@ -29,5 +31,7 @@ public class HospitalResponseBuilder {
         return this;
     }
 
-    public HospitalResponse build(){return instance;}
+    public HospitalResponse build() {
+        return instance;
+    }
 }

@@ -1,0 +1,2 @@
+insert into speciality_table (specialityid, name, description, avatarid, isdeleted, createdat, updatedat, createdby, updatedby) values (1, 'cirujano', 'cirujano 24x7', 2, false, NOW(), null, 1, null)
+insert into speciality_table (specialityid, name, description, avatarid, isdeleted, createdat, updatedat, createdby, updatedby) values (2, 'pediatra', 'pediatra 24x7', 1, false, NOW(), null, 2, null)

@@ -51,8 +51,8 @@ public class HospitalUpdateCmd implements BusinessLogicCommand {
     }
 
     private Hospital updateHospital(Hospital instance) {
-        instance.setName(instance.getName());
-        instance.setAddress(instance.getAddress());
+        instance.setName(input.getName());
+        instance.setAddress(input.getAddress());
         instance.setUpdatedBy(userId);
         instance.setUpdatedAt(new Date());
         return instance;

@@ -4,7 +4,6 @@ import com.dharbor.test.service.model.domain.Profile;
 import com.dharbor.test.service.model.repositories.ProfileRepository;
 import com.jatun.open.tools.blcmd.annotations.SynchronousExecution;
 import com.jatun.open.tools.blcmd.core.BusinessLogicCommand;
-
 import lombok.Getter;
 import lombok.Setter;
 import org.bson.BsonBinarySubType;
@@ -19,6 +18,7 @@ import java.io.IOException;
  */
 @SynchronousExecution
 public class ProfileCreateCmd implements BusinessLogicCommand {
+
     @Setter
     private String userId;
 

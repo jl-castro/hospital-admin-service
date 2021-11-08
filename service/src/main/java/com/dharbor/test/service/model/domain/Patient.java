@@ -48,7 +48,7 @@ public class Patient implements Serializable {
     private Date createdAt;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "updatedat", nullable = true)
+    @Column(name = "updatedat")
     @LastModifiedDate
     private Date updatedAt;
 
@@ -56,7 +56,7 @@ public class Patient implements Serializable {
     @CreatedBy
     private Long createdBy;
 
-    @Column(name = "updatedby", nullable = true)
+    @Column(name = "updatedby")
     @LastModifiedBy
     private Long updatedBy;
 

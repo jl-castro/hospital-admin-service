@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Jorge Castro
@@ -16,5 +17,6 @@ public class DoctorInput {
     private String lastName;
     private Date birthday;
     private String address;
+    private List<String> specialityIds;
 
 }

@@ -67,6 +67,13 @@ public class Doctor implements Serializable {
             uniqueConstraints = {@UniqueConstraint(columnNames = {"doctorid", "patientid"})})
     private List<Patient> patients;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "speciality_doctor_table",
+            joinColumns = @JoinColumn(name = "doctorid", referencedColumnName = "doctorid"),
+            inverseJoinColumns = @JoinColumn(name = "specialityid", referencedColumnName = "specialityid"),
+            uniqueConstraints = {@UniqueConstraint(columnNames = {"doctorid", "specialityid"})})
+    private List<Speciality> specialities;
+
     @PrePersist
     void onPrePersist() {
         this.isDeleted = false;
