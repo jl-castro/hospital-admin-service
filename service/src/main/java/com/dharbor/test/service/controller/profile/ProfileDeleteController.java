@@ -5,10 +5,7 @@ import com.dharbor.test.service.command.profile.ProfileReadOneCmd;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.annotation.RequestScope;
 
 /**
@@ -18,6 +15,7 @@ import org.springframework.web.context.annotation.RequestScope;
 @RequestMapping(value = "/secure/profiles")
 @RestController
 @RequestScope
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 public class ProfileDeleteController {
 
     @Autowired

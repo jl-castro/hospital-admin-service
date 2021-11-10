@@ -12,6 +12,5 @@ public class ProfileResponse {
 
     private String profileId;
     private String image;
-    private String userId;
 
 }

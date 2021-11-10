@@ -54,6 +54,7 @@ public class SpecialityUpdateCmd implements BusinessLogicCommand {
         instance.setName(input.getName());
         instance.setDescription(input.getDescription());
         instance.setAvatarId(input.getAvatarId());
+        instance.setHospitalId(input.getHospitalId());
         instance.setUpdatedBy(userId);
         instance.setUpdatedAt(new Date());
         return instance;

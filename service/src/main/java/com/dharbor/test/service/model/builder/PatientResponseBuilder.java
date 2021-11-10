@@ -24,6 +24,8 @@ public class PatientResponseBuilder {
         instance.setLastName(patient.getLastName());
         instance.setAddress(patient.getAddress());
         instance.setBirthday(patient.getBirthday());
+        instance.setProfileId(patient.getProfileid());
+        instance.setHospitalId(patient.getHospital().getId());
         instance.setIsDeleted(patient.getIsDeleted());
         instance.setCreatedAt(patient.getCreatedAt());
         instance.setUpdatedAt(patient.getUpdatedAt());

@@ -22,7 +22,7 @@ public class Hospital implements Serializable {
 
     @Id
     @Column(name = "hospitalid", nullable = false)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "name")

@@ -1,5 +1,7 @@
 package com.dharbor.test.service.command.speciality;
 
+import com.dharbor.test.hospital.api.response.SpecialityResponse;
+import com.dharbor.test.service.model.builder.SpecialityResponseBuilder;
 import com.dharbor.test.service.model.domain.Speciality;
 import com.dharbor.test.service.model.repositories.SpecialityRepository;
 import com.jatun.open.tools.blcmd.annotations.SynchronousExecution;
@@ -18,20 +20,22 @@ import java.util.stream.Collectors;
 public class SpecialityReadAllCmd implements BusinessLogicCommand {
 
     @Getter
-    private List<Speciality> specialities;
+    private List<SpecialityResponse> specialities;
 
     @Autowired
     private SpecialityRepository repository;
 
     @Override
     public void execute() {
-        specialities = new ArrayList<>(validateDeleted());
+        specialities = new ArrayList<>();
+        validateDeleted();
     }
 
-    private List<Speciality> validateDeleted() {
-        return repository.findAll()
+    private void validateDeleted() {
+        List<Speciality> specialityList = repository.findAll()
                 .stream()
                 .filter(speciality -> Boolean.FALSE.equals(speciality.getIsDeleted()))
                 .collect(Collectors.toList());
+        specialityList.forEach(speciality -> specialities.add(SpecialityResponseBuilder.getInstance(speciality).build()));
     }
 }

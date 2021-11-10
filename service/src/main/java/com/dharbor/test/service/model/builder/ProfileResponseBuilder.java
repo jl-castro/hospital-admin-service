@@ -23,7 +23,6 @@ public class ProfileResponseBuilder {
 
         instance.setProfileId(profile.getId());
         instance.setImage(Base64.getEncoder().encodeToString(profile.getImage().getData()));
-        instance.setUserId(profile.getUserId());
 
         return this;
     }

@@ -17,7 +17,9 @@ public class PatientResponse {
     private String lastName;
     private String address;
     private Date birthday;
+    private String profileId;
     private Boolean isDeleted;
+    private Long hospitalId;
     private Date createdAt;
     private Date updatedAt;
     private Long createdBy;

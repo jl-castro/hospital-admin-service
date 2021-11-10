@@ -24,7 +24,7 @@ public class Speciality implements Serializable {
 
     @Id
     @Column(name = "specialityid", nullable = false)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "name")
@@ -35,6 +35,9 @@ public class Speciality implements Serializable {
 
     @Column(name = "avatarid")
     private Long avatarId;
+
+    @Column(name = "hospitalid")
+    private Long hospitalId;
 
     @Column(name = "isdeleted", nullable = false)
     private Boolean isDeleted;

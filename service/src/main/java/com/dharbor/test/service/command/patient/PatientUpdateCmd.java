@@ -1,8 +1,11 @@
 package com.dharbor.test.service.command.patient;
 
 import com.dharbor.test.hospital.api.input.PatientInput;
+import com.dharbor.test.service.exception.HospitalNotFoundException;
 import com.dharbor.test.service.exception.PatientNotFoundException;
+import com.dharbor.test.service.model.domain.Hospital;
 import com.dharbor.test.service.model.domain.Patient;
+import com.dharbor.test.service.model.repositories.HospitalRepository;
 import com.dharbor.test.service.model.repositories.PatientRepository;
 import com.jatun.open.tools.blcmd.annotations.SynchronousExecution;
 import com.jatun.open.tools.blcmd.core.BusinessLogicCommand;
@@ -25,6 +28,9 @@ public class PatientUpdateCmd implements BusinessLogicCommand {
     private Long patientId;
 
     @Setter
+    private Long hospitalId;
+
+    @Setter
     private PatientInput input;
 
     @Getter
@@ -33,11 +39,15 @@ public class PatientUpdateCmd implements BusinessLogicCommand {
     @Autowired
     private PatientRepository repository;
 
+    @Autowired
+    private HospitalRepository hospitalRepository;
+
     @Override
     public void execute() {
         patient = findPatient(patientId);
         validate();
-        patient = repository.save(updatePatient(patient));
+        Hospital hospital = findHospital(hospitalId);
+        patient = repository.save(updatePatient(patient, hospital));
     }
 
     private Patient findPatient(Long patientId) {
@@ -50,12 +60,18 @@ public class PatientUpdateCmd implements BusinessLogicCommand {
         }
     }
 
-    private Patient updatePatient(Patient instance) {
+    private Hospital findHospital(Long hospitalId) {
+        return hospitalRepository.findById(hospitalId).orElseThrow(() -> new HospitalNotFoundException("Hospital not found with id: " + hospitalId));
+    }
+
+    private Patient updatePatient(Patient instance, Hospital hospital) {
         instance.setName(input.getName());
         instance.setLastName(input.getLastName());
         instance.setAddress(input.getAddress());
         instance.setBirthday(input.getBirthday());
+        instance.setProfileid(input.getProfileId());
         instance.setUpdatedBy(userId);
+        instance.setHospital(hospital);
         instance.setUpdatedAt(new Date());
         return instance;
     }

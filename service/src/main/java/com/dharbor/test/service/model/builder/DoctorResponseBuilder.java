@@ -32,6 +32,8 @@ public class DoctorResponseBuilder {
         instance.setAddress(doctor.getAddress());
         instance.setLastName(doctor.getLastName());
         instance.setBirthday(doctor.getBirthday());
+        instance.setProfileId(doctor.getProfileid());
+        instance.setHospitalId(doctor.getHospital().getId());
         instance.setIsDeleted(doctor.getIsDeleted());
         instance.setCreatedAt(doctor.getCreatedAt());
         instance.setUpdatedAt(doctor.getUpdatedAt());
@@ -54,6 +56,5 @@ public class DoctorResponseBuilder {
 
         return instance;
     }
-
 
 }

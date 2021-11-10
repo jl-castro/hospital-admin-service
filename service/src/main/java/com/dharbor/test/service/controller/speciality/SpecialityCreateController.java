@@ -20,6 +20,7 @@ import org.springframework.web.context.annotation.RequestScope;
 @RequestMapping(value = "/secure/specialities")
 @RequestScope
 @RestController
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 public class SpecialityCreateController {
 
     @Autowired

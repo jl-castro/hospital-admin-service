@@ -16,5 +16,6 @@ public class PatientInput {
     private String lastName;
     private String address;
     private Date birthday;
+    private String profileId;
 
 }

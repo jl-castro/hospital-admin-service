@@ -37,6 +37,7 @@ public class SpecialityCreateCmd implements BusinessLogicCommand {
         instance.setName(input.getName());
         instance.setDescription(input.getDescription());
         instance.setAvatarId(input.getAvatarId());
+        instance.setHospitalId(input.getHospitalId());
         instance.setCreatedBy(userId);
 
         return instance;

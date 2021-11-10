@@ -1,5 +1,7 @@
 package com.dharbor.test.service.command.patient;
 
+import com.dharbor.test.hospital.api.response.PatientResponse;
+import com.dharbor.test.service.model.builder.PatientResponseBuilder;
 import com.dharbor.test.service.model.domain.Patient;
 import com.dharbor.test.service.model.repositories.PatientRepository;
 import com.jatun.open.tools.blcmd.annotations.SynchronousExecution;
@@ -18,20 +20,22 @@ import java.util.stream.Collectors;
 public class PatientReadAllCmd implements BusinessLogicCommand {
 
     @Getter
-    private List<Patient> patients;
+    private List<PatientResponse> patients;
 
     @Autowired
     private PatientRepository repository;
 
     @Override
     public void execute() {
-        patients = new ArrayList<>(validateDeleted());
+        patients = new ArrayList<>();
+        validateDeleted();
     }
 
-    private List<Patient> validateDeleted() {
-        return repository.findAll()
+    private void validateDeleted() {
+        List<Patient> patientList = repository.findAll()
                 .stream()
                 .filter(patient -> Boolean.FALSE.equals(patient.getIsDeleted()))
                 .collect(Collectors.toList());
+        patientList.forEach(patient -> patients.add(PatientResponseBuilder.getInstance(patient).build()));
     }
 }

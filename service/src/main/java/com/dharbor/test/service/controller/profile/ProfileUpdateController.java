@@ -1,7 +1,7 @@
 package com.dharbor.test.service.controller.profile;
 
 import com.dharbor.test.hospital.api.response.ProfileResponse;
-import com.dharbor.test.service.command.profile.ProfileCreateCmd;
+import com.dharbor.test.service.command.profile.ProfileUpdateCmd;
 import com.dharbor.test.service.model.builder.ProfileResponseBuilder;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -17,21 +17,21 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping(value = "/secure/profiles")
 @RestController
 @RequestScope
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 public class ProfileUpdateController {
 
     @Autowired
-    private ProfileCreateCmd profileCreateCmd;
+    private ProfileUpdateCmd profileUpdateCmd;
 
     @ApiOperation(value = "Update a profile")
     @PutMapping(consumes = "multipart/form-data", value = "/{profileId}")
-    public ProfileResponse createProfile(@PathVariable("profileId") String profileId,
-                                         @RequestHeader("User-ID") String userId,
+    public ProfileResponse updateProfile(@PathVariable("profileId") String profileId,
                                          @RequestParam(value = "multipartFile") MultipartFile multipartFile) {
-        profileCreateCmd.setUserId(userId);
-        profileCreateCmd.setMultipartFile(multipartFile);
-        profileCreateCmd.execute();
+        profileUpdateCmd.setProfileId(profileId);
+        profileUpdateCmd.setMultipartFile(multipartFile);
+        profileUpdateCmd.execute();
 
-        return ProfileResponseBuilder.getInstance(profileCreateCmd.getProfile())
+        return ProfileResponseBuilder.getInstance(profileUpdateCmd.getProfile())
                 .build();
     }
 }

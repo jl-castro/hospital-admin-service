@@ -19,6 +19,7 @@ import org.springframework.web.context.annotation.RequestScope;
 @RequestMapping(value = "/secure/patients")
 @RequestScope
 @RestController
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 public class PatientUpdateController {
 
     @Autowired
@@ -28,9 +29,13 @@ public class PatientUpdateController {
             value = "Update a patient"
     )
     @PutMapping(value = "/{patientId}")
-    public PatientResponse updatePatient(@RequestHeader("User-ID") Long userId, @PathVariable("patientId") Long patientId, @RequestBody PatientInput input) {
+    public PatientResponse updatePatient(@RequestHeader("User-ID") Long userId,
+                                         @RequestHeader("hospitalId") Long hospitalId,
+                                         @PathVariable("patientId") Long patientId,
+                                         @RequestBody PatientInput input) {
         patientUpdateCmd.setUserId(userId);
         patientUpdateCmd.setPatientId(patientId);
+        patientUpdateCmd.setHospitalId(hospitalId);
         patientUpdateCmd.setInput(input);
         patientUpdateCmd.execute();
 

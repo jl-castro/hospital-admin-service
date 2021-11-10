@@ -23,6 +23,7 @@ public class SpecialityResponseBuilder {
         instance.setName(speciality.getName());
         instance.setDescription(speciality.getDescription());
         instance.setAvatarId(speciality.getAvatarId());
+        instance.setHospitalId(speciality.getHospitalId());
         instance.setIsDeleted(speciality.getIsDeleted());
         instance.setCreatedAt(speciality.getCreatedAt());
         instance.setUpdatedAt(speciality.getUpdatedAt());

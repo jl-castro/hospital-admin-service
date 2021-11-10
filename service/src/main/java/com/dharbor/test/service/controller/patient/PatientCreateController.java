@@ -20,6 +20,7 @@ import org.springframework.web.context.annotation.RequestScope;
 @RequestMapping(value = "/secure/patients")
 @RequestScope
 @RestController
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 public class PatientCreateController {
 
     @Autowired
@@ -29,8 +30,11 @@ public class PatientCreateController {
             value = "Create a patient"
     )
     @PostMapping
-    public PatientResponse createPatient(@RequestHeader("User-ID") Long userId, @RequestBody PatientInput input) {
+    public PatientResponse createPatient(@RequestHeader("User-ID") Long userId,
+                                         @RequestHeader("hospitalId") Long hospitalId,
+                                         @RequestBody PatientInput input) {
         patientCreateCmd.setUserId(userId);
+        patientCreateCmd.setHospitalId(hospitalId);
         patientCreateCmd.setInput(input);
         patientCreateCmd.execute();
 

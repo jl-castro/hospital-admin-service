@@ -5,7 +5,6 @@ import lombok.Setter;
 import org.bson.types.Binary;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 /**
  * @author Jorge Castro
@@ -19,8 +18,5 @@ public class Profile {
     private String id;
 
     private Binary image;
-
-    @Field
-    private String userId;
 
 }

@@ -28,9 +28,13 @@ public class DoctorUpdateController {
             value = "Update a doctor"
     )
     @PutMapping(value = "/{doctorId}")
-    public DoctorResponse updateDoctor(@RequestHeader("User-ID") Long userId, @PathVariable("doctorId") Long doctorId, @RequestBody DoctorInput input) {
+    public DoctorResponse updateDoctor(@RequestHeader("User-ID") Long userId,
+                                       @RequestHeader("hospitalId") Long hospitalId,
+                                       @PathVariable("doctorId") Long doctorId,
+                                       @RequestBody DoctorInput input) {
         doctorUpdateCmd.setUserId(userId);
         doctorUpdateCmd.setDoctorId(doctorId);
+        doctorUpdateCmd.setHospitalId(hospitalId);
         doctorUpdateCmd.setInput(input);
         doctorUpdateCmd.execute();
 

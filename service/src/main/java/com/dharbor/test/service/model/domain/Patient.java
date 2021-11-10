@@ -10,7 +10,6 @@ import org.springframework.data.annotation.LastModifiedDate;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 /**
  * @author Jorge Castro
@@ -24,7 +23,7 @@ public class Patient implements Serializable {
 
     @Id
     @Column(name = "patientid", nullable = false)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "name")
@@ -38,6 +37,9 @@ public class Patient implements Serializable {
 
     @Column(name = "address")
     private String address;
+
+    @Column(name = "profileid")
+    private String profileid;
 
     @Column(name = "isdeleted", nullable = false)
     private Boolean isDeleted;
@@ -60,8 +62,9 @@ public class Patient implements Serializable {
     @LastModifiedBy
     private Long updatedBy;
 
-    @ManyToMany(mappedBy = "patients")
-    private List<Doctor> doctors;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "hospitalid", referencedColumnName = "hospitalid", nullable = false)
+    private Hospital hospital;
 
     @PrePersist
     void onPrePersist() {

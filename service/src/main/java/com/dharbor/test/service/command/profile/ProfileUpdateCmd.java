@@ -21,9 +21,6 @@ import java.io.IOException;
 public class ProfileUpdateCmd implements BusinessLogicCommand {
 
     @Setter
-    private String userId;
-
-    @Setter
     private String profileId;
 
     @Getter
@@ -47,7 +44,6 @@ public class ProfileUpdateCmd implements BusinessLogicCommand {
 
     private void updateProfile(MultipartFile file) {
         try {
-            profile.setUserId(userId);
             profile.setImage(new Binary(BsonBinarySubType.BINARY, file.getBytes()));
         } catch (IOException ie) {
             ie.printStackTrace();

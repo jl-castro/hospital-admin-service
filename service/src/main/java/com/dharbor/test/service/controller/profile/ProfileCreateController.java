@@ -17,16 +17,16 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping(value = "/secure/profiles")
 @RestController
 @RequestScope
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 public class ProfileCreateController {
 
     @Autowired
     private ProfileCreateCmd profileCreateCmd;
 
     @ApiOperation(value = "Create a profile")
-    @PostMapping(consumes = "multipart/form-data")
-    public ProfileResponse createProfile(@RequestHeader("User-ID") String userId,
-                                         @RequestParam(value = "multipartFile") MultipartFile multipartFile) {
-        profileCreateCmd.setUserId(userId);
+//    @PostMapping(consumes = "multipart/form-data")
+    @PostMapping
+    public ProfileResponse createProfile(@RequestParam(value = "multipartFile") MultipartFile multipartFile) {
         profileCreateCmd.setMultipartFile(multipartFile);
         profileCreateCmd.execute();
 

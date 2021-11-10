@@ -19,9 +19,6 @@ import java.io.IOException;
 @SynchronousExecution
 public class ProfileCreateCmd implements BusinessLogicCommand {
 
-    @Setter
-    private String userId;
-
     @Getter
     private Profile profile;
 
@@ -38,7 +35,6 @@ public class ProfileCreateCmd implements BusinessLogicCommand {
 
     private Profile fillData(MultipartFile file) {
         Profile instance = new Profile();
-        instance.setUserId(userId);
         try {
             instance.setImage(new Binary(BsonBinarySubType.BINARY, file.getBytes()));
         } catch (IOException ie) {

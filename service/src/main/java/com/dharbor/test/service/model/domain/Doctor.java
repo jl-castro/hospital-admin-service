@@ -24,7 +24,7 @@ public class Doctor implements Serializable {
 
     @Id
     @Column(name = "doctorid", nullable = false)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "name")
@@ -39,6 +39,9 @@ public class Doctor implements Serializable {
     @Column(name = "address")
     private String address;
 
+    @Column(name = "profileid")
+    private String profileid;
+
     @Column(name = "isdeleted", nullable = false)
     private Boolean isDeleted;
 
@@ -48,7 +51,7 @@ public class Doctor implements Serializable {
     private Date createdAt;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "updatedat", nullable = true)
+    @Column(name = "updatedat")
     @LastModifiedDate
     private Date updatedAt;
 
@@ -56,16 +59,9 @@ public class Doctor implements Serializable {
     @CreatedBy
     private Long createdBy;
 
-    @Column(name = "updatedby", nullable = true)
+    @Column(name = "updatedby")
     @LastModifiedBy
     private Long updatedBy;
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "patient_doctor_table",
-            joinColumns = @JoinColumn(name = "doctorid", referencedColumnName = "doctorid"),
-            inverseJoinColumns = @JoinColumn(name = "patientid", referencedColumnName = "patientid"),
-            uniqueConstraints = {@UniqueConstraint(columnNames = {"doctorid", "patientid"})})
-    private List<Patient> patients;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "speciality_doctor_table",
@@ -73,6 +69,10 @@ public class Doctor implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "specialityid", referencedColumnName = "specialityid"),
             uniqueConstraints = {@UniqueConstraint(columnNames = {"doctorid", "specialityid"})})
     private List<Speciality> specialities;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "hospitalid", referencedColumnName = "hospitalid", nullable = false)
+    private Hospital hospital;
 
     @PrePersist
     void onPrePersist() {

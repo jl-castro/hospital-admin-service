@@ -17,6 +17,7 @@ public class DoctorInput {
     private String lastName;
     private Date birthday;
     private String address;
+    private String profileId;
     private List<String> specialityIds;
 
 }

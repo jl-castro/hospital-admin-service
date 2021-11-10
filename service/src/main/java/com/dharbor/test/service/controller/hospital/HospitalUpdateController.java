@@ -19,6 +19,7 @@ import org.springframework.web.context.annotation.RequestScope;
 @RequestMapping(value = "/secure/hospitals")
 @RequestScope
 @RestController
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 public class HospitalUpdateController {
 
     @Autowired
@@ -28,7 +29,9 @@ public class HospitalUpdateController {
             value = "Update a hospital"
     )
     @PutMapping(value = "/{hospitalId}")
-    public HospitalResponse updateHospital(@RequestHeader("User-ID") Long userId, @PathVariable("hospitalId") Long hospitalId, @RequestBody HospitalInput input) {
+    public HospitalResponse updateHospital(@RequestHeader("User-ID") Long userId,
+                                           @PathVariable("hospitalId") Long hospitalId,
+                                           @RequestBody HospitalInput input) {
         hospitalUpdateCmd.setUserId(userId);
         hospitalUpdateCmd.setHospitalId(hospitalId);
         hospitalUpdateCmd.setInput(input);
