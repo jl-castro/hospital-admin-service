@@ -21,6 +21,8 @@ public class HistoryResponseBuilder {
 
         instance.setHistoryId(history.getId());
         instance.setDescription(history.getDescription());
+        instance.setPatientId(history.getPatient().getId());
+        instance.setDoctorId(history.getDoctor().getId());
         instance.setIsDeleted(history.getIsDeleted());
         instance.setCreatedAt(history.getCreatedAt());
         instance.setUpdatedAt(history.getUpdatedAt());

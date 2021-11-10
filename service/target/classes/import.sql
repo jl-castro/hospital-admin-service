@@ -37,4 +37,11 @@ insert into speciality_doctor_table(doctorid, specialityid) values (5,2);
 insert into speciality_doctor_table(doctorid, specialityid) values (5,3);
 insert into speciality_doctor_table(doctorid, specialityid) values (6,3);
 
+insert into history_table(historyid, description, isdeleted, doctorid, patientid, createdat, updatedat, createdby, updatedby) values (1, 'consulta medica', false, 1, 2, NOW(), null, 1, null);
+insert into history_table(historyid, description, isdeleted, doctorid, patientid, createdat, updatedat, createdby, updatedby) values (2, 'revision medica', false, 2, 1, NOW(), null, 1, null);
+insert into history_table(historyid, description, isdeleted, doctorid, patientid, createdat, updatedat, createdby, updatedby) values (3, 'extraccion de muela', false, 1, 3, NOW(), null, 1, null);
+insert into history_table(historyid, description, isdeleted, doctorid, patientid, createdat, updatedat, createdby, updatedby) values (4, 'operacion', false, 3, 5, NOW(), null, 1, null);
+insert into history_table(historyid, description, isdeleted, doctorid, patientid, createdat, updatedat, createdby, updatedby) values (5, 'cirujia medica', false, 4, 4, NOW(), null, 1, null);
+insert into history_table(historyid, description, isdeleted, doctorid, patientid, createdat, updatedat, createdby, updatedby) values (6, 'consulta medica', false, 5, 2, NOW(), null, 1, null);
+insert into history_table(historyid, description, isdeleted, doctorid, patientid, createdat, updatedat, createdby, updatedby) values (7, 'revision medica', false, 6, 1, NOW(), null, 1, null);
 

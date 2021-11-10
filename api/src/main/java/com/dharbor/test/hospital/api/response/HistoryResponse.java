@@ -14,6 +14,8 @@ public class HistoryResponse {
 
     private Long historyId;
     private String description;
+    private Long patientId;
+    private Long doctorId;
     private Boolean isDeleted;
     private Date createdAt;
     private Date updatedAt;
